@@ -13,6 +13,6 @@
 
     <div class="form-group actions">
         <button type="submit" class="btn btn-primary">{{ $buttonText }}</button>
-        <a href="/people/{{ $contact->id }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
+        <a href="/people/{{ $contact->uiid }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
     </div> <!-- .form-group -->
 </form>

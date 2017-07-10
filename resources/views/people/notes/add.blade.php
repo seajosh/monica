@@ -34,7 +34,7 @@
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             @include('people.notes.form', [
               'method' => 'POST',
-              'action' => route('people.notes.store', $contact),
+              'action' => route('people.notes.store', $contact->uuid),
               'buttonText' => trans('people.notes_add_cta')
             ])
           </div>

@@ -34,7 +34,7 @@
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             @include('people.notes.form', [
               'method' => 'PUT',
-              'action' => route('people.notes.update', [$contact, $note]),
+              'action' => route('people.notes.update', [$contact->uuid, $note]),
               'buttonText' => trans('people.notes_edit_cta')
             ])
           </div>

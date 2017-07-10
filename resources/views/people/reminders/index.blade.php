@@ -4,7 +4,7 @@
     {{ trans('people.section_personal_reminders') }}
 
     <span>
-      <a href="/people/{{ $contact->id }}/reminders/add" class="btn">{{ trans('people.reminders_cta') }}</a>
+      <a href="/people/{{ $contact->uiid }}/reminders/add" class="btn">{{ trans('people.reminders_cta') }}</a>
     </span>
   </h3>
 </div>
@@ -15,7 +15,7 @@
   <div class="col-xs-12">
     <div class="section-blank">
       <h3>{{ trans('people.reminders_blank_title', ['name' => $contact->first_name]) }}</h3>
-      <a href="/people/{{ $contact->id }}/reminders/add">{{ trans('people.reminders_blank_add_activity') }}</a>
+      <a href="/people/{{ $contact->uiid }}/reminders/add">{{ trans('people.reminders_blank_add_activity') }}</a>
     </div>
   </div>
 
@@ -49,7 +49,7 @@
         <div class="table-cell list-actions">
           {{-- Only display this if the reminder can be deleted - ie if it's not a reminder added automatically for birthdates --}}
           @if ($reminder->is_birthday == 'false')
-            <a href="/people/{{ $contact->id }}/reminders/{{ $reminder->id }}/delete" onclick="return confirm('{{ trans('people.reminders_delete_confirmation') }}')">
+            <a href="/people/{{ $contact->uiid }}/reminders/{{ $reminder->id }}/delete" onclick="return confirm('{{ trans('people.reminders_delete_confirmation') }}')">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
           @endif

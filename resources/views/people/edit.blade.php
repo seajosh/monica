@@ -16,7 +16,7 @@
                 <a href="/people">{{ trans('app.breadcrumb_list_contacts') }}</a>
               </li>
               <li>
-                <a href="/people/{{ $contact->id }}">{{ $contact->getCompleteName(auth()->user()->name_order) }}</a>
+                <a href="/people/{{ $contact->uiid }}">{{ $contact->getCompleteName(auth()->user()->name_order) }}</a>
               </li>
               <li>
                 {{ trans('people.edit_contact_information') }}
@@ -35,7 +35,7 @@
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-            <form method="POST" action="/people/{{ $contact->id }}/update" enctype="multipart/form-data">
+            <form method="POST" action="/people/{{ $contact->uiid }}/update" enctype="multipart/form-data">
               {{ csrf_field() }}
 
               @include('partials.errors')
@@ -44,7 +44,7 @@
 
               <p class="delete-contact">
                 {{ trans('people.people_delete_message') }}
-                <a href="/people/{{ $contact->id }}/delete" onclick="return confirm('{{ trans('people.people_delete_confirmation') }}')">{{ trans('people.people_delete_click_here') }}</a>.
+                <a href="/people/{{ $contact->uiid }}/delete" onclick="return confirm('{{ trans('people.people_delete_confirmation') }}')">{{ trans('people.people_delete_click_here') }}</a>.
               </p>
 
               {{-- Gender --}}
@@ -212,7 +212,7 @@
 
               <div class="form-group actions">
                 <button type="submit" class="btn btn-primary">{{ trans('app.save') }}</button>
-                <a href="/people/{{ $contact->id }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
+                <a href="/people/{{ $contact->uiid }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
               </div> <!-- .form-group -->
             </form>
           </div>

@@ -3,7 +3,7 @@
   <h3>
     {{ trans('people.section_personal_activities') }}
 
-    <span><a href="/people/{{ $contact->id }}/activities/add" class="btn">{{ trans('people.activities_add_activity') }}</a></span>
+    <span><a href="/people/{{ $contact->uiid }}/activities/add" class="btn">{{ trans('people.activities_add_activity') }}</a></span>
   </h3>
 </div>
 
@@ -12,7 +12,7 @@
   <div class="col-xs-12">
     <div class="section-blank">
       <h3>{{ trans('people.activities_blank_title', ['name' => $contact->getFirstName()]) }}</h3>
-      <a href="/people/{{ $contact->id }}/activities/add">{{ trans('people.activities_blank_add_activity') }}</a>
+      <a href="/people/{{ $contact->uiid }}/activities/add">{{ trans('people.activities_blank_add_activity') }}</a>
     </div>
   </div>
 
@@ -30,10 +30,10 @@
           {{ $activity->getSummary() }}
         </div>
         <div class="table-cell list-actions">
-          <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/edit" class="edit">
+          <a href="/people/{{ $contact->uiid }}/activities/{{ $activity->id }}/edit" class="edit">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </a>
-          <a href="/people/{{ $contact->id }}/activities/{{ $activity->id }}/delete" onclick="return confirm('{{ trans('people.activities_delete_confirmation') }}')">
+          <a href="/people/{{ $contact->uiid }}/activities/{{ $activity->id }}/delete" onclick="return confirm('{{ trans('people.activities_delete_confirmation') }}')">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>

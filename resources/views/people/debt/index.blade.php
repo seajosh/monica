@@ -4,7 +4,7 @@
     {{ trans('people.debt_title') }}
 
     <span>
-      <a href="/people/{{ $contact->id }}/debt/add" class="btn">{{ trans('people.debt_add_cta') }}</a>
+      <a href="/people/{{ $contact->uiid }}/debt/add" class="btn">{{ trans('people.debt_add_cta') }}</a>
     </span>
   </h3>
 </div>
@@ -14,7 +14,7 @@
   <div class="col-xs-12">
     <div class="section-blank">
       <h3>{{ trans('people.debts_blank_title', ['name' => $contact->getFirstName()]) }}</h3>
-      <a href="/people/{{ $contact->id }}/debt/add">{{ trans('people.debt_add_cta') }}</a>
+      <a href="/people/{{ $contact->uiid }}/debt/add">{{ trans('people.debt_add_cta') }}</a>
     </div>
   </div>
 
@@ -46,10 +46,10 @@
           @endif
         </div>
         <div class="table-cell list-actions">
-          <a href="{{ route('people.debt.edit', ['people' => $contact->id, 'debtId' => $debt->id]) }}">
+          <a href="{{ route('people.debt.edit', ['people' => $contact->uiid, 'debtId' => $debt->id]) }}">
             <i class="fa fa-pencil" aria-hidden="true"></i>
           </a>
-          <a href="/people/{{ $contact->id }}/debt/{{ $debt->id }}/delete" onclick="return confirm('{{ trans('people.debt_delete_confirmation') }}')">
+          <a href="/people/{{ $contact->uiid }}/debt/{{ $debt->id }}/delete" onclick="return confirm('{{ trans('people.debt_delete_confirmation') }}')">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>

@@ -32,7 +32,7 @@
       <div class="{{ Auth::user()->getFluidLayout() }}">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-            <form method="POST" action="/people/{{ $contact->id }}/tasks/store">
+            <form method="POST" action="/people/{{ $contact->uiid }}/tasks/store">
               {{ csrf_field() }}
 
               <h2>{{ trans('people.tasks_add_title_page', ['name' => $contact->getFirstName()]) }}</h2>
@@ -52,7 +52,7 @@
 
               <div class="form-group actions">
                 <button type="submit" class="btn btn-primary">{{ trans('people.tasks_add_cta') }}</button>
-                <a href="/people/{{ $contact->id }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
+                <a href="/people/{{ $contact->uiid }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
               </div>
             </form>
           </div>

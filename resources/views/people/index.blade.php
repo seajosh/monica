@@ -91,7 +91,7 @@
                 @foreach($contacts as $contact)
 
                 <li class="people-list-item">
-                  <a href="/people/{{ $contact->id }}">
+                  <a href="/people/{{ $contact->uuid }}">
                     @if ($contact->has_avatar == 'true')
                       <img src="{{ $contact->getAvatarURL(110) }}" width="43">
                     @else

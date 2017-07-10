@@ -3,7 +3,7 @@
 @section('title', $contact->getCompleteName(auth()->user()->name_order) )
 
 @section('content')
-  <div class="people-show" data-contact-id="{{ $contact->id }}">
+  <div class="people-show" data-contact-id="{{ $contact->uiid }}">
     {{ csrf_field() }}
 
     {{-- Breadcrumb --}}

@@ -37,62 +37,62 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('contact', function ($value) {
             return Contact::where('account_id', auth()->user()->account_id)
-                ->where('id', $value)
+                ->where('uuid', $value)
                 ->firstOrFail();
         });
 
         Route::bind('activity', function($value, $route) {
             return  Activity::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('reminder', function($value, $route) {
             return  Reminder::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('task', function($value, $route) {
             return  Task::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('gift', function($value, $route) {
             return  Gift::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('debt', function($value, $route) {
             return  Debt::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('significant_other', function($value, $route) {
             return  SignificantOther::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('kid', function($value, $route) {
             return  Kid::where('account_id', auth()->user()->account_id)
-                ->where('child_of_contact_id', $route->parameter('contact')->id)
+                ->where('child_of_contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
 
         Route::bind('note', function($value, $route) {
             return  Note::where('account_id', auth()->user()->account_id)
-                ->where('contact_id', $route->parameter('contact')->id)
+                ->where('contact_id', $route->parameter('contact')->uiid)
                 ->where('id', $value)
                 ->firstOrFail();
         });
