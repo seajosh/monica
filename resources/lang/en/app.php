@@ -53,6 +53,8 @@ return [
     'breadcrumb_edit_significant_other' => 'Edit significant other',
     'breadcrumb_add_note' => 'Add a note',
     'breadcrumb_edit_note' => 'Edit a note',
+    'breadcrumb_add_activity' => 'Add an activity',
+    'breadcrumb_edit_activity' => 'Edit an activity',
 
     'gender_male' => 'Man',
     'gender_female' => 'Woman',

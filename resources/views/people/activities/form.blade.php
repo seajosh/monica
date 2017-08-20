@@ -2,32 +2,54 @@
     {{ method_field($method) }}
     {{ csrf_field() }}
 
-    <h2>{{ trans('people.activities_add_title', ['name' => $contact->getFirstName()]) }}</h2>
+    @include('partials.errors')
+
+    {{-- Past or present --}}
+    <div class="mb3">
+      <label class="dib mr2">
+          <input type="radio" class="" name="in_debt" id="youowe" value="yes" @if(old('in_debt') !== 'no' || $debt->in_debt !== 'no') checked @endif>
+          Report an activity that happened
+      </label>
+
+      <label class="dib">
+          <input type="radio" class="input" name="in_debt" id="theyowe" value="no">
+          Schedule an upcoming activity
+      </label>
+    </div>
 
     {{-- Summary --}}
-    <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
-        <label for="summary">{{ trans('people.activities_summary') }}</label>
-        <input type="text" id="summary" class="form-control" name="summary" autofocus required maxlength="254" value="{{ old('summary') ?? $activity->summary }}">
-        @if ($errors->has('summary'))
-            <span class="help-block">
-                <strong>{{ $errors->first('summary') }}</strong>
-            </span>
-        @endif
+    <div class="mb3">
+      <label for="summary">Describe what this activity is about</label>
+      <input type="text" id="summary" class="db input-reset pa2 w-100" name="summary" autofocus required maxlength="254" value="{{ old('summary') ?? $activity->summary }}" placeholder="Go to the theater and have a lot of fun">
+    </div>
+
+    <div class="cf mb3">
+      <label class="db">Date of the activity</label>
+      <select name="year">
+        @for ($i = 0 ; $i < 10 ; $i++)
+          <option value="">{{ \Carbon\Carbon::now(Auth::user()->timezone)->subYears($i)->year }}</option>
+        @endfor
+      </select>
+      <select name="month">
+        @for ($i = 0 ; $i < 10 ; $i++)
+          <option value="">{{ \Carbon\Carbon::now(Auth::user()->timezone)->subYears($i)->year }}</option>
+        @endfor
+      </select>
+      <select name="year">
+        @for ($i = 1 ; $i < 32 ; $i++)
+          <option value="">{{ $i }}</option>
+        @endfor
+      </select>
     </div>
 
     {{-- Date --}}
     <div class="form-group{{ $errors->has('date_it_happened') ? ' has-error' : '' }}">
-        <label for="date_it_happened">{{ trans('people.activities_add_date_occured') }}</label>
-        <input type="date" id="date_it_happened" name="date_it_happened" class="form-control"
-               value="{{ old('date_it_happened') ?? $activity->date_it_happened->format('Y-m-d') ?? \Carbon\Carbon::now(Auth::user()->timezone)->format('Y-m-d') }}"
-               min="{{ \Carbon\Carbon::now(Auth::user()->timezone)->subYears(10)->format('Y-m-d') }}"
-               max="{{ \Carbon\Carbon::now(Auth::user()->timezone)->format('Y-m-d') }}"
+      <label for="date_it_happened">{{ trans('people.activities_add_date_occured') }}</label>
+      <input type="date" id="date_it_happened" name="date_it_happened" class="form-control"
+           value="{{ old('date_it_happened') ?? $activity->date_it_happened->format('Y-m-d') ?? \Carbon\Carbon::now(Auth::user()->timezone)->format('Y-m-d') }}"
+           min="{{ \Carbon\Carbon::now(Auth::user()->timezone)->subYears(10)->format('Y-m-d') }}"
+           max="{{ \Carbon\Carbon::now(Auth::user()->timezone)->format('Y-m-d') }}"
         >
-        @if ($errors->has('date_it_happened'))
-            <span class="help-block">
-                <strong>{{ $errors->first('date_it_happened') }}</strong>
-            </span>
-        @endif
     </div>
 
     {{-- Build the Activity types dropdown --}}
@@ -51,25 +73,19 @@
                 </optgroup>
             @endforeach
         </select>
-        @if ($errors->has('activity_type_id'))
-            <span class="help-block">
-                <strong>{{ $errors->first('activity_type_id') }}</strong>
-            </span>
-        @endif
     </div>
 
-    <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-        <label for="description">{{ trans('people.activities_add_optional_comment') }}</label>
-        <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') ?? $activity->description }}</textarea>
-        @if ($errors->has('description'))
-            <span class="help-block">
-                <strong>{{ $errors->first('description') }}</strong>
-            </span>
-        @endif
+    <div class="mb4">
+      <label for="description">{{ trans('people.activities_add_optional_comment') }}</label>
+      <textarea class="w-100" id="description" name="description" rows="3">{{ old('description') ?? $activity->description }}</textarea>
     </div>
 
-    <div class="form-group actions">
-        <button type="submit" class="btn btn-primary">{{ trans('people.activities_add_cta') }}</button>
-        <a href="{{ route('people.show', $contact) }}" class="btn btn-secondary">{{ trans('app.cancel') }}</a>
+    <div class="flex items-center justify-center">
+      <div class="inline-flex items-center w-100 mr4">
+        <button type="submit" class="w-100 btn btn-primary">{{ trans('people.activities_add_cta') }}</button>
+      </div>
+      <div class="inline-flex items-center w-100">
+        <a href="{{ route('people.show', $contact) }}" class="w-100 btn btn-secondary">{{ trans('app.cancel') }}</a>
+      </div>
     </div>
 </form>
