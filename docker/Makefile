@@ -1,4 +1,4 @@
-test_server: waitfordb
+test_server:
 	docker/test-server.sh
 
 shell:

@@ -1,5 +1,15 @@
 version: "2"
 services:
+  idmonica:
+    build: .
+    image: idahodata/monicahq
+    links:
+    ports:
+      - 80:80
+    env_file: .env
+    volumes:
+      - ./persist/storage/app/public:/var/www/monica/storage/app/public
+
   monicahq:
     build: .
     image: monicahq/monicahq
