@@ -14,7 +14,7 @@ class AddActivityLocationToActivities extends Migration
     public function up()
     {
         Schema::table('activity_types', function (Blueprint $table) {
-            $table->string('location_type')->after('key');
+            $table->string('location_type')->nullable()->after('key');
         });
     }
 

@@ -13,7 +13,7 @@ class AddAccountInfoTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('account_id')->after('remember_token');
+            $table->integer('account_id')->default(0)->after('remember_token');
             $table->string('send_sms_alert')->default('false')->after('account_id');
             $table->integer('phone_number')->nullable()->after('send_sms_alert');
             $table->integer('amazon_store_country_id')->nullable()->after('phone_number');

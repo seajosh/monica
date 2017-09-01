@@ -14,7 +14,7 @@ class AddTitleToActivities extends Migration
     public function up()
     {
         Schema::table('activities', function (Blueprint $table) {
-            $table->string('summary')->after('activity_type_id');
+            $table->string('summary')->nullable()->after('activity_type_id');
         });
     }
 }

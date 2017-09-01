@@ -23,6 +23,9 @@ class AddMultipleGendersChoices extends Migration
                 $this->alterEnum('significant_others', 'gender', ['male', 'female', 'none']);
                 $this->alterEnum('kids', 'gender', ['male', 'female', 'none']);
                 break;
+            case 'sqlite':
+                break;
+                
             default:
                 throw new \Exception("Driver {$driverName} not supported.");
                 break;

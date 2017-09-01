@@ -1,3 +1,6 @@
+sqlite:
+	docker/sqlite.sh
+
 test_server:
 	docker/test-server.sh
 

@@ -13,14 +13,14 @@ class ChangeRemindersTable extends Migration
      */
     public function up()
     {
-        Schema::table('reminders', function (Blueprint $table) {
-            $table->dropColumn(
-                'deleted_at', 'people_id'
-            );
-        });
+        // Schema::table('reminders', function (Blueprint $table) {
+        //     $table->dropColumn(
+        //         'deleted_at', 'people_id'
+        //     );
+        // });
 
         Schema::table('reminders', function (Blueprint $table) {
-            $table->integer('contact_id')->after('account_id');
+            $table->integer('contact_id')->nullable()->after('account_id');
         });
     }
 

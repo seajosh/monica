@@ -17,13 +17,13 @@ class ChangeContactsTable extends Migration
         Schema::table('contacts', function ($table) {
             $table->boolean('is_significant_other')->after('gender')->default(0);
             $table->boolean('is_kid')->after('is_significant_other')->default(0);
-            $table->dropColumn(
-                'has_kids', 'number_of_kids', 'nature_of_relationship'
-            );
+            // $table->dropColumn(
+            //     'has_kids', 'number_of_kids', 'nature_of_relationship'
+            // );
         });
 
         Schema::table('significant_others', function ($table) {
-            $table->integer('temp_contact_id');
+            $table->integer('temp_contact_id')->nullable();
         });
 
         $significantOthers = DB::table('significant_others')->get();

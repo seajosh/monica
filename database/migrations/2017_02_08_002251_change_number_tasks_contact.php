@@ -13,15 +13,15 @@ class ChangeNumberTasksContact extends Migration
      */
     public function up()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn(
-                'number_of_tasks'
-            );
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->dropColumn(
+        //         'number_of_tasks'
+        //     );
+        // });
 
         Schema::table('contacts', function (Blueprint $table) {
-            $table->integer('number_of_tasks_in_progress')->after('number_of_gifts_offered');
-            $table->integer('number_of_tasks_completed')->after('number_of_tasks_in_progress');
+            $table->integer('number_of_tasks_in_progress')->nullable()->after('number_of_gifts_offered');
+            $table->integer('number_of_tasks_completed')->nullable()->after('number_of_tasks_in_progress');
         });
     }
 

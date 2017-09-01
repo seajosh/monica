@@ -13,7 +13,7 @@ class AddIconColumn extends Migration
     public function up()
     {
         Schema::table('activity_types', function ($table) {
-            $table->string('icon')->after('key');
+            $table->string('icon')->nullable()->after('key');
         });
     }
 

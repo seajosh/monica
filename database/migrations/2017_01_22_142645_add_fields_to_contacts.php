@@ -13,21 +13,24 @@ class AddFieldsToContacts extends Migration
      */
     public function up()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->string('has_kids')->default('false')->after('gender');
-            $table->integer('number_of_kids')->default('0')->after('has_kids');
-            $table->date('last_talked_to')->nullable()->after('number_of_kids');
-            $table->integer('number_of_reminders')->default('0')->after('last_talked_to');
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->string('has_kids')->default('false')->after('gender');
+        //     $table->integer('number_of_kids')->default('0')->after('has_kids');
+        //     $table->date('last_talked_to')->nullable()->after('number_of_kids');
+        //     $table->integer('number_of_reminders')->default('0')->after('last_talked_to');
+        // });
 
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn(
-                'entity_id', 'people_id', 'twitter_id', 'instagram_id'
-            );
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->dropColumn(
+        //         'entity_id',
+        //         'people_id',
+        //         'twitter_id',
+        //         'instagram_id'
+        //     );
+        // });
 
         Schema::table('activities', function (Blueprint $table) {
-            $table->integer('contact_id')->after('account_id');
+           $table->integer('contact_id')->nullable()->after('account_id');
         });
 
         Schema::table('activities', function (Blueprint $table) {

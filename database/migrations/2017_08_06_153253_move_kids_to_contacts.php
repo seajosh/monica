@@ -16,7 +16,7 @@ class MoveKidsToContacts extends Migration
     {
         // Create the new tables
         Schema::table('kids', function ($table) {
-            $table->integer('temp_contact_id');
+            $table->integer('temp_contact_id')->nullable();
         });
 
         Schema::create('offsprings', function (Blueprint $table) {

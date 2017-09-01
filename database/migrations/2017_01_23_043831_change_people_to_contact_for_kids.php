@@ -14,7 +14,7 @@ class ChangePeopleToContactForKids extends Migration
     public function up()
     {
         Schema::table('kids', function (Blueprint $table) {
-            $table->integer('child_of_contact_id')->after('account_id');
+           $table->integer('child_of_contact_id')->nullable()->after('account_id');
         });
 
         Schema::table('kids', function (Blueprint $table) {
