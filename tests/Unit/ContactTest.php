@@ -100,6 +100,7 @@ class ContactTest extends TestCase
     public function testGetAgeReturnsFalseIfNoBirthdateIsDefinedForContact()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->birthdate = null;
 
         $this->assertNull(
@@ -112,6 +113,7 @@ class ContactTest extends TestCase
         $dateFiveYearsAgo = Carbon::now()->subYears(25);
 
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->birthdate = $dateFiveYearsAgo;
 
         $this->assertEquals(
@@ -217,6 +219,7 @@ class ContactTest extends TestCase
     public function testGetLastActivityDateWithNoActivities()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->account_id = 1;
         $contact->id = 1;
 
@@ -230,6 +233,7 @@ class ContactTest extends TestCase
     public function testGetLastCalledWithNullData()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->last_talked_to = null;
 
         $timezone = 'America/New_York';
@@ -242,6 +246,7 @@ class ContactTest extends TestCase
     public function testGetLastCalledWithData()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->last_talked_to = '2013-10-29 10:10:10';
 
         $timezone = 'America/New_York';
@@ -254,6 +259,7 @@ class ContactTest extends TestCase
     public function testGetAvatarColor()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->default_avatar_color = '#fffeee';
 
         $this->assertEquals(
@@ -275,13 +281,14 @@ class ContactTest extends TestCase
     public function testGetPartialAddressReturnsNullIfNoCityIsDefined()
     {
         $contact = new Contact;
-
+        $contact->first_name = 'John';
         $this->assertNull($contact->getPartialAddress());
     }
 
     public function testGetPartialAddressReturnsCityIfProvinceIsUndefined()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->city = 'Montreal';
 
         $this->assertEquals(
@@ -293,6 +300,7 @@ class ContactTest extends TestCase
     public function testGetPartialAddressReturnsCityAndProvince()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->city = 'Montreal';
         $contact->province = 'QC';
 
@@ -312,6 +320,7 @@ class ContactTest extends TestCase
     public function testGetCountryCodeReturnsStreetWhenDefined()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->country_id = 1;
 
         $this->assertEquals(
@@ -323,6 +332,7 @@ class ContactTest extends TestCase
     public function testGetCountryISOReturnsNullIfISONotFound()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->country_id = null;
 
         $this->assertNull($contact->getCountryISO());
@@ -331,6 +341,7 @@ class ContactTest extends TestCase
     public function testGetCountryISOReturnsTheRightISO()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->country_id = 1;
 
         $this->assertEquals(
@@ -361,7 +372,7 @@ class ContactTest extends TestCase
     public function testGetGiftsOfferedReturns0WhenNoRemindersDefined()
     {
         $contact = new Contact;
-
+        $contact->first_name = 'John';
         $this->assertEquals(
             0,
             $contact->getGiftsOffered()->count()
@@ -371,6 +382,7 @@ class ContactTest extends TestCase
     public function testGetGiftIdeasReturns0WhenNoRemindersDefined()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
 
         $this->assertEquals(
             0,
@@ -381,6 +393,7 @@ class ContactTest extends TestCase
     public function testGetTasksInProgressReturns0WhenNoTasksDefined()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
 
         $this->assertEquals(
             0,
@@ -391,6 +404,7 @@ class ContactTest extends TestCase
     public function testGetCompletedReturns0WhenNoTasksDefined()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
 
         $this->assertEquals(
             0,
@@ -401,6 +415,7 @@ class ContactTest extends TestCase
     public function testGetAvatarReturnsPath()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->avatar_file_name = 'h0FMvD2cA3r2Q1EtGiv7aq9yl5BoXH2KIenDsoGX.jpg';
 
         $this->assertEquals(
@@ -412,6 +427,7 @@ class ContactTest extends TestCase
     public function testIsBirthdateApproximate()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
         $contact->is_birthdate_approximate = 'true';
 
         $this->assertEquals(
@@ -423,6 +439,7 @@ class ContactTest extends TestCase
     public function testHasDebt()
     {
         $contact = new Contact;
+        $contact->first_name = 'John';
 
         $this->assertFalse(
             $contact->hasDebt()
@@ -433,6 +450,7 @@ class ContactTest extends TestCase
     {
         $date = '2017-01-22 17:56:03';
         $contact = new Contact;
+        $contact->first_name = 'John';
         $call = new Call;
         $call->called_at = $date;
 
@@ -444,6 +462,7 @@ class ContactTest extends TestCase
         );
 
         $otherContact = new Contact;
+        $otherContact->first_name = 'John';
         $otherContact->last_talked_to = '1990-01-01 01:01:01';
 
         $otherContact->updateLastCalledInfo($call);
@@ -454,6 +473,9 @@ class ContactTest extends TestCase
         );
     }
 
+    /**
+     * @group debug
+     */
     public function test_set_birthday_method()
     {
         Carbon::setTestNow(Carbon::create(2017, 1, 1));
@@ -461,6 +483,7 @@ class ContactTest extends TestCase
         $age = 30;
 
         $contact = new Contact;
+        $contact->first_name = 'Paul';
         $contact->setBirthday('approximate', $birthdate, $age);
 
         $this->assertEquals(
@@ -474,6 +497,7 @@ class ContactTest extends TestCase
         );
 
         $contact = new Contact;
+        $contact->first_name = 'Ringo';
         $contact->setBirthday('unknown', $birthdate, $age);
 
         $this->assertEquals(
@@ -489,7 +513,12 @@ class ContactTest extends TestCase
         $account = factory(\App\Account::class)->create();
         $contact = factory(\App\Contact::class)->create([
             'account_id' => $account->id,
+            'first_name' => 'George',
         ]);
+        // $contact = new Contact;
+        // $contact->first_name = 'George';
+        // $contact->account_id = $account->id;
+        
         $user = factory(\App\User::class)->create([
             'account_id' => $account->id,
         ]);
@@ -569,7 +598,10 @@ class ContactTest extends TestCase
     public function testIsOwedMoney()
     {
         /** @var Contact $contact */
-        $contact = factory(Contact::class)->create();
+        $account = factory(\App\Account::class)->create();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $account->id,
+        ]);
 
         $contact->debts()->save(new Debt(['in_debt' => 'no', 'amount' => 100]));
 
@@ -579,7 +611,11 @@ class ContactTest extends TestCase
     public function testIsNotOwedMoney()
     {
         /** @var Contact $contact */
-        $contact = factory(Contact::class)->create();
+        $account = factory(\App\Account::class)->create();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $account->id,
+        ]);
+        // $contact = factory(Contact::class)->create();
 
         $contact->debts()->save(new Debt(['in_debt' => 'yes', 'amount' => 100]));
 
@@ -589,7 +625,10 @@ class ContactTest extends TestCase
     public function testTotalOutstandingDebtAmountIsCorrect()
     {
         /** @var Contact $contact */
-        $contact = factory(Contact::class)->create();
+        $account = factory(\App\Account::class)->create();
+        $contact = factory(Contact::class)->create([
+            'account_id' => $account->id,
+        ]);
 
         $contact->debts()->save(new Debt(['in_debt' => 'no', 'amount' => 100]));
         $contact->debts()->save(new Debt(['in_debt' => 'no', 'amount' => 100]));

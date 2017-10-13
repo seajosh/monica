@@ -52,6 +52,12 @@ $db = [
             'prefix' => '',
         ],
 
+        'testing' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE_TESTING', database_path('database.sqlite.testing')),
+            'prefix' => '',
+        ],                
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
@@ -66,17 +72,17 @@ $db = [
             'engine' => null,
         ],
 
-        'testing' => [
-            'driver'    => 'mysql',
-            'host'      => env('DB_TEST_HOST'),
-            'database'  => env('DB_TEST_DATABASE'),
-            'username'  => env('DB_TEST_USERNAME'),
-            'password'  => env('DB_TEST_PASSWORD'),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'strict'    => false,
-        ],
+        // 'testing' => [
+        //     'driver'    => 'mysql',
+        //     'host'      => env('DB_TEST_HOST'),
+        //     'database'  => env('DB_TEST_DATABASE'),
+        //     'username'  => env('DB_TEST_USERNAME'),
+        //     'password'  => env('DB_TEST_PASSWORD'),
+        //     'charset'   => 'utf8',
+        //     'collation' => 'utf8_unicode_ci',
+        //     'prefix'    => '',
+        //     'strict'    => false,
+        // ],
 
         'pgsql' => [
             'driver' => 'pgsql',
