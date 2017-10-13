@@ -13,8 +13,8 @@ class DropRemindersCountFromContacts extends Migration
      */
     public function up()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->dropColumn('number_of_reminders');
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->dropColumn('number_of_reminders');
+        // });
     }
 }

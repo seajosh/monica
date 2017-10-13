@@ -14,7 +14,7 @@ class CreateActivityTypeTable extends Migration
     {
         Schema::create('activity_types', function ($table) {
             $table->increments('id');
-            $table->integer('activity_type_group_id');
+            $table->integer('activity_type_group_id')->default(0);
             $table->string('key');
             $table->timestamps();
         });
